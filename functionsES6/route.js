@@ -1,5 +1,4 @@
-const EDIT_FLAG = '/edit/:boardnum/:flag';
-const SLACK_EDIT_FLAG = '/edit';
+const PWD_MATCH = '/pwd';
 
 const routes = {
 	// update: (id, flag) => {
@@ -10,7 +9,7 @@ const routes = {
 	// 		return EDIT_FLAG;
 	// 	}
 	// },
-	update: SLACK_EDIT_FLAG,
+	pwd_match: PWD_MATCH,
 };
 
 export default routes;

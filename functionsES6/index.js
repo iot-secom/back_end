@@ -7,10 +7,8 @@ import admin from 'firebase-admin';
 import bodyParser from 'body-parser';
 import express from 'express';
 import cors from 'cors';
-import dotenv from 'dotenv';
 import path from 'path';
 
-import route from './route';
 import router from './router';
 admin.initializeApp();
 const app = express();
@@ -27,11 +25,6 @@ const functionConfig = () => {
 console.log(functionConfig());
 // Automatically allow cross-origin requests
 app.use(cors({ origin: true }));
-dotenv.config({
-	path: path.join(__dirname, `/.env'}`),
-});
-
-console.log(process.env.DB_PORT);
 
 // Add middleware to authenticate requests
 app.use(express.json());
