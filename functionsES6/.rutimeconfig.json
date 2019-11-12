@@ -1,7 +1,0 @@
-{
-	"DB_HOST": "people.crill5r0eutb.ap-northeast-2.rds.amazonaws.com",
-	"DB_USER": "people",
-	"DB_PW": "people123!",
-	"DB_PORT": "7746",
-	"DATABASE": "people"
-}

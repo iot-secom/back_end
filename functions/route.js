@@ -1,7 +1,12 @@
-const PWD_MATCH = "/pwd";
-const MAC = "/mac";
+"use strict";
 
-const routes = {
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+var PWD_MATCH = "/pwd";
+var MAC = "/mac";
+
+var routes = {
   // update: (id, flag) => {
   // 	if (id) {
   // 		console.log(id);
@@ -14,4 +19,4 @@ const routes = {
   mac: MAC
 };
 
-export default routes;
+exports.default = routes;
