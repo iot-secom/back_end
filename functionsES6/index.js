@@ -8,20 +8,21 @@ import bodyParser from 'body-parser';
 import express from 'express';
 import cors from 'cors';
 import path from 'path';
+import connectDB from './db';
 
 import router from './router';
 admin.initializeApp();
 const app = express();
 
 const functionConfig = () => {
-	if (process.env.RUN_LOCALLY) {
-		const fs = require('fs');
-		return JSON.parse(fs.readFileSync('.env.json'));
-	} else {
-		return functions.config();
-	}
+  if (process.env.RUN_LOCALLY) {
+    const fs = require('fs');
+    return JSON.parse(fs.readFileSync('.env.json'));
+  } else {
+    return functions.config();
+  }
 };
-
+connectDB();
 console.log(functionConfig());
 // Automatically allow cross-origin requests
 app.use(cors({ origin: true }));
