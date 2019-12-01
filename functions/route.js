@@ -1,10 +1,12 @@
-"use strict";
+'use strict';
 
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-var PWD_MATCH = "/pwd";
-var MAC = "/mac";
+var PWD_MATCH = '/pwd';
+var MAC = '/mac';
+var REG = '/register';
+var WHO_ON = '/who_on';
 
 var routes = {
   // update: (id, flag) => {
@@ -16,7 +18,9 @@ var routes = {
   // 	}
   // },
   pwd_match: PWD_MATCH,
-  mac: MAC
+  mac: MAC,
+  reg: REG,
+  who_on: WHO_ON
 };
 
 exports.default = routes;

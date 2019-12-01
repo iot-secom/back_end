@@ -24,6 +24,10 @@ var _path = require('path');
 
 var _path2 = _interopRequireDefault(_path);
 
+var _db = require('./db');
+
+var _db2 = _interopRequireDefault(_db);
+
 var _router = require('./router');
 
 var _router2 = _interopRequireDefault(_router);
@@ -32,21 +36,23 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
 
+_firebaseAdmin2.default.initializeApp();
+
 // // Create and Deploy Your First Cloud Functions
 // // https://firebase.google.com/docs/functions/write-firebase-functions
 //
-_firebaseAdmin2.default.initializeApp();
+
 var app = (0, _express2.default)();
 
 var functionConfig = function functionConfig() {
-	if (process.env.RUN_LOCALLY) {
-		var fs = require('fs');
-		return JSON.parse(fs.readFileSync('.env.json'));
-	} else {
-		return functions.config();
-	}
+  if (process.env.RUN_LOCALLY) {
+    var fs = require('fs');
+    return JSON.parse(fs.readFileSync('.env.json'));
+  } else {
+    return functions.config();
+  }
 };
-
+(0, _db2.default)();
 console.log(functionConfig());
 // Automatically allow cross-origin requests
 app.use((0, _cors2.default)({ origin: true }));
