@@ -15,6 +15,7 @@ class Controller {
         newUser.pwd = pwd;
         newUser.device_id = mac;
         newUser.exist_flag = false;
+        newUser.admin_flag = false;
         await newUser.save();
       }
       res.json({ status: 'ok' });
@@ -75,10 +76,19 @@ class Controller {
   }
 
   async log(req, res) {
-    // name, 출석 기록
     try {
-      res.json({});
-    } catch (err) {}
+      const logs = await Log.find({});
+      const log_c = await Promise.all(logs.map(async l => {
+        const user = await User.findOne({device_id:l.device_id}, {name:1});
+        console.log(user.name)
+        const exist_string = l.exist_flag? '들어왔습니다.': '나갔습니다.';
+        return `${user.name} ${exist_string}, 시간: ${l.time}`
+      }));
+      
+      res.json(log_c);
+    } catch (err) {
+      console.log(err)
+    }
   }
 
   async exit(req, res) {
@@ -91,6 +101,7 @@ class Controller {
         log.device_id = mac;
         log.exist_flag = false;
         log.time = new Date().toString();
+        await log.save()
       }
       res.json({ exit: 'ok' });
     } catch (err) {}
