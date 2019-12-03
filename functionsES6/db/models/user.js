@@ -14,6 +14,9 @@ const User = new Schema({
   },
   exist_flag: {
     type: Boolean
+  },
+  admin_flag:{
+    type:Boolean
   }
 });
 
