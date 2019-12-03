@@ -33,6 +33,7 @@ var Controller = function () {
           newUser.pwd = pwd;
           newUser.device_id = mac;
           newUser.exist_flag = false;
+          newUser.admin_flag = false;
           await newUser.save();
         }
         res.json({ status: 'ok' });
@@ -95,10 +96,19 @@ var Controller = function () {
   }, {
     key: 'log',
     value: async function log(req, res) {
-      // name, 출석 기록
       try {
-        res.json({});
-      } catch (err) {}
+        var logs = await _models.Log.find({});
+        var log_c = await Promise.all(logs.map(async function (l) {
+          var user = await _models.User.findOne({ device_id: l.device_id }, { name: 1 });
+          console.log(user.name);
+          var exist_string = l.exist_flag ? '들어왔습니다.' : '나갔습니다.';
+          return user.name + ' ' + exist_string + ', \uC2DC\uAC04: ' + l.time;
+        }));
+
+        res.json(log_c);
+      } catch (err) {
+        console.log(err);
+      }
     }
   }, {
     key: 'exit',
@@ -112,6 +122,7 @@ var Controller = function () {
           log.device_id = mac;
           log.exist_flag = false;
           log.time = new Date().toString();
+          await log.save();
         }
         res.json({ exit: 'ok' });
       } catch (err) {}

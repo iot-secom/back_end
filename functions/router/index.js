@@ -24,5 +24,7 @@ router.post(_route2.default.pwd_match, _indexCtrl2.default.pwd_match);
 router.post(_route2.default.mac, _indexCtrl2.default.mac);
 router.post(_route2.default.reg, _indexCtrl2.default.register);
 router.get(_route2.default.who_on, _indexCtrl2.default.who_on);
+router.post(_route2.default.exit, _indexCtrl2.default.exit);
+router.get(_route2.default.logs, _indexCtrl2.default.log);
 
 exports.default = router;

@@ -7,6 +7,8 @@ var PWD_MATCH = '/pwd';
 var MAC = '/mac';
 var REG = '/register';
 var WHO_ON = '/who_on';
+var EXIT = '/exit';
+var LOGS = '/log';
 
 var routes = {
   // update: (id, flag) => {
@@ -20,7 +22,9 @@ var routes = {
   pwd_match: PWD_MATCH,
   mac: MAC,
   reg: REG,
-  who_on: WHO_ON
+  who_on: WHO_ON,
+  exit: EXIT,
+  logs: LOGS
 };
 
 exports.default = routes;
