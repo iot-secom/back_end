@@ -2,6 +2,8 @@ const PWD_MATCH = '/pwd';
 const MAC = '/mac';
 const REG = '/register';
 const WHO_ON = '/who_on';
+const EXIT = '/exit'
+const LOGS = '/log'
 
 const routes = {
   // update: (id, flag) => {
@@ -15,7 +17,9 @@ const routes = {
   pwd_match: PWD_MATCH,
   mac: MAC,
   reg: REG,
-  who_on: WHO_ON
+  who_on: WHO_ON,
+  exit: EXIT,
+  logs: LOGS
 };
 
 export default routes;

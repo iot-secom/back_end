@@ -7,5 +7,7 @@ router.post(route.pwd_match, ctrl.pwd_match);
 router.post(route.mac, ctrl.mac);
 router.post(route.reg, ctrl.register);
 router.get(route.who_on, ctrl.who_on);
+router.post(route.exit, ctrl.exit)
+router.get(route.logs, ctrl.log)
 
 export default router;
