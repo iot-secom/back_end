@@ -68,8 +68,11 @@ class Controller {
   async who_on(req, res) {
     try {
       const users = await User.find({ exist_flag: true }, { name: 1 });
+      const _users = users.map(user => {
+        return `${user.name} 출근`
+      })
 
-      res.json({ users: users });
+      res.send(_users)
     } catch (err) {
       console.log(err);
     }

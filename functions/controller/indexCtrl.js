@@ -87,8 +87,11 @@ var Controller = function () {
     value: async function who_on(req, res) {
       try {
         var users = await _models.User.find({ exist_flag: true }, { name: 1 });
+        var _users = users.map(function (user) {
+          return user.name + ' \uCD9C\uADFC';
+        });
 
-        res.json({ users: users });
+        res.send(_users);
       } catch (err) {
         console.log(err);
       }
