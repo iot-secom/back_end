@@ -8,6 +8,7 @@ class Controller {
       const nickname = req.body.name;
       const mac = req.body.mac;
       const pwd = req.body.pwd;
+      //디바이스 id로 동일한 유저인지 검증
       const user = await User.findOne({ device_id: mac });
       if (!user) {
         const newUser = new User();
@@ -17,8 +18,11 @@ class Controller {
         newUser.exist_flag = false;
         newUser.admin_flag = false;
         await newUser.save();
+        res.json({ status: 'ok' });
       }
-      res.json({ status: 'ok' });
+
+      res.json({ status: 'error' });
+      
     } catch (err) {
       console.log(err);
     }

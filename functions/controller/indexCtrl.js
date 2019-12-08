@@ -26,6 +26,7 @@ var Controller = function () {
         var nickname = req.body.name;
         var mac = req.body.mac;
         var pwd = req.body.pwd;
+        //디바이스 id로 동일한 유저인지 검증
         var user = await _models.User.findOne({ device_id: mac });
         if (!user) {
           var newUser = new _models.User();
@@ -35,8 +36,10 @@ var Controller = function () {
           newUser.exist_flag = false;
           newUser.admin_flag = false;
           await newUser.save();
+          res.json({ status: 'ok' });
         }
-        res.json({ status: 'ok' });
+
+        res.json({ status: 'error' });
       } catch (err) {
         console.log(err);
       }
