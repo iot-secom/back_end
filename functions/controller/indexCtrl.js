@@ -59,7 +59,8 @@ var Controller = function () {
             log.time = new Date().toString();
             await log.save();
             console.log(log);
-            res.json({ user: user.nickname, exist_flag: true });
+            console.log(user);
+            res.json({ user: user.name, exist_flag: true, admin_flag: user.admin_flag ? true : false });
           } else {
             res.json({ user: user.nickname, status: 'pwd is not match' });
           }
@@ -91,7 +92,7 @@ var Controller = function () {
           return user.name + ' \uCD9C\uADFC';
         });
 
-        res.send(_users);
+        res.json(_users);
       } catch (err) {
         console.log(err);
       }

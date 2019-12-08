@@ -42,7 +42,8 @@ class Controller {
           log.time = new Date().toString();
           await log.save();
           console.log(log);
-          res.json({ user: user.nickname, exist_flag: true });
+          console.log(user)
+          res.json({ user: user.name, exist_flag: true, admin_flag: user.admin_flag? true: false });
         } else {
           res.json({ user: user.nickname, status: 'pwd is not match' });
         }
@@ -72,7 +73,7 @@ class Controller {
         return `${user.name} 출근`
       })
 
-      res.send(_users)
+      res.json(_users)
     } catch (err) {
       console.log(err);
     }
