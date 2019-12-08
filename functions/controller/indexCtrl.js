@@ -124,7 +124,7 @@ var Controller = function () {
         var mac = req.body.mac;
         var user = await _models.User.findOne({ device_id: mac });
         if (user) {
-          _models.User.updateOne({ device_id: mac }, { $set: { exist_flag: 'false' } });
+          await _models.User.updateOne({ device_id: mac }, { $set: { exist_flag: 'false' } });
           var log = new _models.Log();
           log.device_id = mac;
           log.exist_flag = false;

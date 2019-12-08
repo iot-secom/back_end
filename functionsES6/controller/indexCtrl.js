@@ -104,7 +104,7 @@ class Controller {
       const mac = req.body.mac;
       const user = await User.findOne({ device_id: mac });
       if (user) {
-        User.updateOne({ device_id: mac }, { $set: { exist_flag: 'false' } });
+        await User.updateOne({ device_id: mac }, { $set: { exist_flag: 'false' } });
         const log = new Log();
         log.device_id = mac;
         log.exist_flag = false;
